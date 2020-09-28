@@ -20,6 +20,19 @@ class UserService {
         return users;
     }
 
+    async findById(id: number): Promise<any> {
+        const data = await userRepository.findById(id);
+        let user: any = new User();
+
+        data.rows.map((dataUser: []) => {
+            data.rowDescription.columns.map((item: any, index: number) => {
+                user[item.name] = dataUser[index]
+            });
+        });
+
+        return user;
+    }
+
     async create(ctx: any): Promise<any> {
         const result = ctx.request.body(); // content type automatically detected
         let user = new User()

@@ -13,6 +13,17 @@ class UserController {
         }
     }
 
+    async findById(ctx: any): Promise<any> {
+        ctx.response.status = 200;
+        ctx.response.body = {
+            meta: {
+                code: 200,
+                status: "Ok",
+            },
+            data: await userService.findById(ctx.params.id)
+        }
+    }
+
     async create(ctx: any): Promise<any> {
         await userService.create(ctx);
 
