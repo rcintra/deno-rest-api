@@ -35,6 +35,18 @@ class UserController {
             }
         }
     }
+
+    async update(ctx: any): Promise<any> {
+        await userService.update(ctx);
+
+        ctx.response.status = 200;
+        ctx.response.body = {
+            meta: {
+                code: 200,
+                status: "Ok",
+            }
+        }
+    }
 }
 
 export default new UserController()

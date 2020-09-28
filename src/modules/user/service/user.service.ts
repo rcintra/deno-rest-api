@@ -37,10 +37,22 @@ class UserService {
         const result = ctx.request.body(); // content type automatically detected
         let user = new User()
         if (result.type === "json") {
-            const value = await result.value; // an object of parsed JSON
-            user.name = value;
+            const value = await result.value; // an object of parsed JSON            
+            user.name = value.name;
         }
         return await userRepository.create(user);
+    }
+
+    async update(ctx: any): Promise<any> {
+        const result = ctx.request.body(); // content type automatically detected
+        let user = new User();
+        if (result.type === "json") {
+            const value = await result.value; // an object of parsed JSON            
+            user.name = value.name;
+        }
+        user.id = ctx.params.id        
+
+        return await userRepository.update(user);
     }
 }
 

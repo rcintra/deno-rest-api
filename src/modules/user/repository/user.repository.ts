@@ -20,6 +20,13 @@ class UserRepository {
             args: [user.name]
         })
     }
+
+    async update(user: User): Promise<any> {
+        return await database.query({
+            text: "UPDATE users set name = $1 where id = $2",
+            args: [user.name, user.id]
+        })
+    }
 }
 
 export default new UserRepository();
