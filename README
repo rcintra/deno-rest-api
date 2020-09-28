@@ -1,0 +1,19 @@
+# Config ENV - LOCAL
+    DB_USER=
+    DB_NAME=
+    DB_HOSTNAME=localhost
+    DB_PASSWORD=
+    DB_PORT=5432
+    APP_HOST=localhost
+
+# Debug Mode
+deno run --inspect-brk  --allow-env --allow-net --allow-read app.ts
+
+# Run only
+deno run --allow-env --allow-net --allow-read app.ts
+
+# API
+    findAll
+        GET /api/v1/users fetch data users
+    create
+        POST /api/v1/users create data user
