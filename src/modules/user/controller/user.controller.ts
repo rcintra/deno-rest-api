@@ -47,6 +47,18 @@ class UserController {
             }
         }
     }
+
+    async delete(ctx: any): Promise<any> {
+        await userService.delete(ctx.params.id);
+
+        ctx.response.status = 200;
+        ctx.response.body = {
+            meta: {
+                code: 200,
+                status: "Ok",
+            }
+        }
+    }
 }
 
 export default new UserController()

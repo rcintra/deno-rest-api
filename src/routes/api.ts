@@ -9,7 +9,6 @@ export const api = (router: any) => {
         .get("/api/v1/users/:id", UserController.findById)    
     router
         .patch("/api/v1/users/:id", UserController.update)
-    /*router
+    router
         .delete("/api/v1/users/:id", UserController.delete)
-    */
 };

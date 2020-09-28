@@ -27,6 +27,13 @@ class UserRepository {
             args: [user.name, user.id]
         })
     }
+
+    async delete(id: number): Promise<any> {
+        return await database.query({
+            text: "DELETE FROM users where id = $1",
+            args: [id]
+        })
+    }
 }
 
 export default new UserRepository();
